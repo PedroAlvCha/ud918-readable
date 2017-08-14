@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import comment from './comment_reducer';
-import post from './post_reducer';
+import commentManager from './comment_reducer';
+import postManager from './post_reducer';
+import categryManager from './categories_reducer';
 
 const rootReducer = combineReducers({
-  food,
-  calendar,
+  postManager,
+  commentManager,
+  categryManager,
 });
 
 export default rootReducer;

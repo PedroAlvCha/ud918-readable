@@ -22,10 +22,11 @@ Since this is a development project for learning, a list of additional extension
 1. `npm install --save dotenv` Environment variables
 2. `npm install --save-dev babel-core babel-cli babel-preset-es2015` Javascript. Yup.
 3. `npm install --save-dev mocha chai` Debugging and Unit Testing
-4. `npm install --save immutable` Facebooks' object library
-5. `npm install --save-dev chai-immutable` Chai support
-6. `npm install --save redux` redux
-7. `npm install --save socket.io` lets talk with sockets
+4. `npm install --save-dev react-addons-test-utils` Testing package
+5. `npm install --save immutable` Facebooks' object library
+6. `npm install --save-dev chai-immutable` Chai support
+7. `npm install --save redux` redux
+8. `npm install --save socket.io` lets talk with sockets
 
 ## Pending Dev
 
