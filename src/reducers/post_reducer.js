@@ -1,4 +1,9 @@
-import { * } from '../actions/post_actions.js'
+import  {
+          POST_DELETE,
+          POST_CREATE,
+          POST_VOTE,
+          POST_EDIT,
+        } from '../actions/post_actions.js'
 
 
 const initialPostListState = {

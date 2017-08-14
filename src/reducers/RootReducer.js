@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import commentManager from './comment_reducer';
-import postManager from './post_reducer';
-import categryManager from './categories_reducer';
+import { commentManager } from './comment_reducer.js';
+import { postManager } from './post_reducer.js';
+import { categoryManager } from './categories_reducer.js';
 
 const rootReducer = combineReducers({
   postManager,
   commentManager,
-  categryManager,
+  categoryManager,
 });
 
-export default rootReducer;
+export {rootReducer};

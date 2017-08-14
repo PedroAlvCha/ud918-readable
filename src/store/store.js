@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import RootReducer from '../reducers/RootReducer.js';
+import { rootReducer } from '../reducers/RootReducer.js';
 
 
 const logger = store => next => action => {
@@ -17,7 +17,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 export default function makeStore() {
   return createStore(
-    reducer,
+    rootReducer,
     composeEnhancers(
       applyMiddleware(logger)
     )

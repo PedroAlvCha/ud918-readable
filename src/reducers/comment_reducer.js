@@ -1,4 +1,9 @@
-import { * } from '../actions/comment_actions.js'
+import  {
+          COMMENT_EDIT,
+          COMMENT_CREATE,
+          COMMENT_VOTE,
+          COMMENT_DELETE,
+        } from '../actions/comment_actions.js'
 
 const initialCommentListState = {
   commentList: [],

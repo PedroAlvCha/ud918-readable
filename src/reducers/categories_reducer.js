@@ -1,4 +1,6 @@
-import {* } from '../actions/category_actions.js'
+import  {
+          CATEGORY_CREATE,
+        } from '../actions/category_actions.js'
 
 const initialCategoryListState = {
     categoryList: [],

@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -8,11 +6,13 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import makeStore from './store/store.js';
 import { startServer } from './utils/InAppServer';
-import { Provider } from 'react-redux'
 
+require('dotenv').config()
 
 export const store = makeStore();
-startInAppServer(store);
+//startInAppServer(store);
+
+console.log(store.getState());
 
 
 ReactDOM.render(

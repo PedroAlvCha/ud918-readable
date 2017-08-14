@@ -26,7 +26,8 @@ Since this is a development project for learning, a list of additional extension
 5. `npm install --save immutable` Facebooks' object library
 6. `npm install --save-dev chai-immutable` Chai support
 7. `npm install --save redux` redux
-8. `npm install --save socket.io` lets talk with sockets
+8. `npm install --save react-redux` react + redux... nuff said.
+9. `npm install --save socket.io` lets talk with sockets
 
 ## Pending Dev
 
