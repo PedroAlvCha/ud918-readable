@@ -3,6 +3,7 @@ import  {
           POST_CREATE,
           POST_VOTE,
           POST_EDIT,
+          POST_LIST_SET,
         } from '../actions/post_actions.js'
 
 
@@ -21,6 +22,12 @@ export function postManager (state = initialPostListState, action) {
       return state
     case POST_VOTE :
       return state
+    case POST_LIST_SET :
+      const postListToOverWrite = action.payload
+      return {
+        ...state,
+        postList:postListToOverWrite,
+      }
     default :
       return state
   }

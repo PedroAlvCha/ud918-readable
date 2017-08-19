@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import '../css/App.css';
+import { Route } from 'react-router-dom';
+import NavBarInstance  from './NavigationHeader.js';
+import ListPostsComponent from './PostList.js'
 
 class App extends Component {
   render() {
     return (
       <div >
-        Hello World!
+        <NavBarInstance />
+        <ListPostsComponent />
       </div>
     );
   }

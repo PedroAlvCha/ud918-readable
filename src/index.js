@@ -5,14 +5,14 @@ import './css/index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import makeStore from './store/store.js';
-import { startServer } from './utils/InAppServer';
+//import { startInAppServer } from './utils/InAppServer';
 
 require('dotenv').config()
 
 export const store = makeStore();
 //startInAppServer(store);
 
-console.log(store.getState());
+//console.log('store.getState()',store.getState());
 
 
 ReactDOM.render(
@@ -21,4 +21,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 )
-registerServiceWorker()
+registerServiceWorker();

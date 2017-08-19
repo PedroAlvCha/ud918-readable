@@ -9,7 +9,7 @@ For further details on React.js feel free to investigate [here](https://reactjs.
 
 ## Installation Instructions
 
-This application was created with `create-react-app` and requires only npm install and npm start to get it installed and launched.
+This application was created with facebook's `create-react-app` and requires only npm install and npm start to get it installed and launched.
 
 1. Clone or download this project to a folder or directory.
 2. Once downloaded, open a terminal on the directory and type `npm install` to install.
@@ -27,7 +27,11 @@ Since this is a development project for learning, a list of additional extension
 6. `npm install --save-dev chai-immutable` Chai support
 7. `npm install --save redux` redux
 8. `npm install --save react-redux` react + redux... nuff said.
-9. `npm install --save socket.io` lets talk with sockets
+9. `npm install --save react-router-dom` react + redux... nuff said.
+10. `npm install --save redux-thunk` for middleware between redux store and react
+11. `npm install --save react-key-index` for identity generation
+12. `npm install --save react-bootstrap` for look and feel
+13. `npm install --save socket.io` lets talk with sockets
 
 ## Pending Dev
 

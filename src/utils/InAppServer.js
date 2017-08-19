@@ -1,6 +1,6 @@
 import Server from 'socket.io';
 
-export default function startInAppServer(store){
+export function startInAppServer(store){
   const io = new Server().attach(8090);
 
   store.subscribe(
