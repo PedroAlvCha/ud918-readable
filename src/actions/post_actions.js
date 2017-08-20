@@ -53,8 +53,11 @@ const postListSet = postListToSet => ({
 
 export function fetchPostList(){
   const request = contentAPIutil.postsGet();
+
   return (dispatch) => {
     request.then(function(result) {
+      console.log('fetchPostListresult', result)
+      console.log('fetchPostListRequest', request)
       if(result == null){
         let emptyArray = []
         dispatch({type: 'POST_LIST_SET', payload: emptyArray })

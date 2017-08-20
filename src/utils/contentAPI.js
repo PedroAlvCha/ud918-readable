@@ -19,4 +19,4 @@ export const categoriesGet = () =>
 export const postsGet = () =>
   fetch(`${api}/posts`, { headers })
     .then(res => res.json())
-    .then(data => data.posts)
+    .then(data => data)

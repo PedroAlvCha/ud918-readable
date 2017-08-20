@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { postListSet, fetchPostList } from '../actions/post_actions.js';
 import keyIndex from 'react-key-index';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import PostSummaryComponent  from './PostSummary.js'
 
 
 class ListPostsComponent extends Component {
@@ -18,15 +19,21 @@ class ListPostsComponent extends Component {
     const { postList } = this.props
 
     return(
-      <div>
-        hello
-      </div>
+      <ListGroup>
+        {postList.map((post) => (
+          <ListGroupItem>
+            <PostSummaryComponent
+              post={post}
+            />
+          </ListGroupItem>
+        ))}
+      </ListGroup>
     )
   }
 }
 function mapStateToProps (state, props) {
   return {
-      postList: state.categoryManager.postList,
+      postList: state.postManager.postList,
   }
 }
 
