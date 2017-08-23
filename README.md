@@ -27,11 +27,13 @@ Since this is a development project for learning, a list of additional extension
 6. `npm install --save-dev chai-immutable` Chai support
 7. `npm install --save redux` redux
 8. `npm install --save react-redux` react + redux... nuff said.
-9. `npm install --save react-router-dom` react + redux... nuff said.
-10. `npm install --save redux-thunk` for middleware between redux store and react
-11. `npm install --save react-key-index` for identity generation
-12. `npm install --save react-bootstrap` for look and feel
-13. `npm install --save socket.io` lets talk with sockets
+9. `npm install --save react-router` Navigation
+10. `npm install --save react-router-dom` Navigation for the web.
+11. `npm install --save redux-thunk` for middleware between redux store and react
+12. `npm install --save react-key-index` for identity generation
+13. `npm install --save react-bootstrap` for look and feel
+14. `npm install --save react-icons` icons for our buttons
+15. `npm install --save socket.io` lets talk with sockets
 
 ## Pending Dev
 

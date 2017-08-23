@@ -23,7 +23,7 @@ class NavBarInstance extends Component {
       <Navbar inverse collapseOnSelect defaultExpanded>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#">Readable</a>
+            <a href="">Readable</a>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>

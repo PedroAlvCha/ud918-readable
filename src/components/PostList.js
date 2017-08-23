@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { postListSet, fetchPostList } from '../actions/post_actions.js';
+import { fetchPostList, postVoteDown, postVoteUp } from '../actions/post_actions.js';
 import keyIndex from 'react-key-index';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import PostSummaryComponent  from './PostSummary.js'
@@ -16,18 +16,24 @@ class ListPostsComponent extends Component {
   }
 
   render(){
-    const { postList } = this.props
+    const { postList, voteDownPost, voteUpPost } = this.props
 
     return(
-      <ListGroup>
-        {postList.map((post) => (
-          <ListGroupItem>
-            <PostSummaryComponent
-              post={post}
-            />
-          </ListGroupItem>
-        ))}
-      </ListGroup>
+      <div>
+        <div>Sort by stuff</div>
+        <div>Add new post</div>
+        <ListGroup>
+          {postList.map((post) => (
+            <ListGroupItem key={post.id}>
+              <PostSummaryComponent
+                post={post}
+                votePostUp={voteUpPost}
+                votePostDown={voteDownPost}
+              />
+            </ListGroupItem>
+          ))}
+        </ListGroup>
+      </div>
     )
   }
 }
@@ -40,6 +46,8 @@ function mapStateToProps (state, props) {
 function mapDispatchToProps (dispatch) {
   return {
     postListFetch: (data) =>dispatch(fetchPostList(data)),
+    voteDownPost: (data)=>dispatch(postVoteDown(data)),
+    voteUpPost: (data)=>dispatch(postVoteUp(data)),
   }
 }
 
