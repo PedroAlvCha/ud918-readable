@@ -6,7 +6,9 @@ export const POST_DELETE = 'POST_DELETE'
 export const POST_CREATE = 'POST_CREATE'
 export const POST_VOTE_UP = 'POST_VOTE_UP'
 export const POST_VOTE_DOWN = 'POST_VOTE_DOWN'
-export const POST_LIST_SET = 'POST_LIST_SET';
+export const POST_LIST_SET = 'POST_LIST_SET'
+export const POST_LIST_CHANGE_SORT_VARIABLE = 'POST_LIST_CHANGE_SORT_VARIABLE'
+export const POST_LIST_CHANGE_SORT_ASCDESC = 'POST_LIST_CHANGE_SORT_ASCDESC';
 
 
 export function postCreate ({ id, timestamp, title, body, author, category }) {
@@ -70,11 +72,27 @@ export function postVoteDown ( id ) {
   }
 };
 
+
+
 export function postVoteUp ( id ) {
   const request = contentAPIutil.postVoteUp(id);
   return (dispatch) => {
     request.then(function(result) {
       dispatch({type: 'POST_VOTE_UP', payload: id })
     });
+  }
+};
+
+export function postListChangeSort_AscDesc ( sortDirection ) {
+  return {
+    type: POST_LIST_CHANGE_SORT_ASCDESC,
+    sortDirection,
+  }
+};
+
+export function postListChangeSort_Variable ( sortVariable ) {
+  return {
+    type: POST_LIST_CHANGE_SORT_VARIABLE,
+    sortVariable,
   }
 };

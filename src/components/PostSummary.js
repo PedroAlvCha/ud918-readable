@@ -8,8 +8,6 @@ import { dateToStringYYYY_MM_DD_HH_MM } from '../utils/helpers.js';
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up';
 import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down';
 
-let localDebug =1;
-let localDebugContext = 'PostSummary.js'
 
 class PostSummaryComponent extends Component {
   state = {
@@ -28,10 +26,6 @@ class PostSummaryComponent extends Component {
     let postDate = new Date(postObject.timestamp)
     let postDateString = dateToStringYYYY_MM_DD_HH_MM(postDate);
 
-    if(localDebug === 1){
-      console.log('postURL at ' + localDebugContext, postURL)
-      console.log('postDateString at ' + localDebugContext, postDateString)
-    }
 
     return(
       <div id={postObject.id}>
