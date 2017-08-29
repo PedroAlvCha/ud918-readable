@@ -9,12 +9,16 @@ import  {
 
 
 const initialPostListState = {
-    postList: [],
+    postList: {},
 }
 
 export function postManager (state = initialPostListState, action) {
 
+  const postManagerPointer = 'postManager'
   const postListPointer = 'postList'
+  const voteScorePointer = 'voteScore'
+  var postIds
+  var postPositionInArray
 
   switch (action.type) {
     case POST_EDIT :
@@ -24,23 +28,30 @@ export function postManager (state = initialPostListState, action) {
     case POST_CREATE :
       return state
     case POST_VOTE_UP :
-      const postIds = action.payload
-      console.log('postIds',postIds)
-      console.log('state',state)
-      console.log('state.postList',state.postList.filter((post) => (post.id === postIds)))
+      postIds = action.payload
+      postPositionInArray = state.postList.findIndex(x => x.id=== postIds)
       return {
         ...state,
-        [postListPointer]:{
-        ...state.[postListPointer][postIds],
-        [voteScore]:  state.postList[postIds][voteScore]+1
+        [postListPointer]: {
+          ...state[postListPointer],
+          [postPositionInArray]:{
+            ...state[postListPointer][postPositionInArray],
+            [voteScorePointer]:state[postListPointer][postPositionInArray][voteScorePointer]+1,
+          },
         }
       }
     case POST_VOTE_DOWN :
-      const postId = action.payload
-      console.log('postId',postId)
-      console.log('state',state)
+      postIds = action.payload
+      postPositionInArray = state.postList.findIndex(x => x.id== postIds)
       return {
-        state
+        ...state,
+        [postListPointer]: {
+          ...state[postListPointer],
+          [postPositionInArray]:{
+            ...state[postListPointer][postPositionInArray],
+            [voteScorePointer]:state[postListPointer][postPositionInArray][voteScorePointer]-1,
+          },
+        }
       }
     case POST_LIST_SET :
       const postListToOverWrite = action.payload

@@ -1,8 +1,5 @@
 import * as contentAPIutil from '../utils/contentAPI.js';
-import keyIndex from 'react-key-index';
 
-let localDebug =1;
-let localDebugContext = 'post_actions.js'
 
 export const POST_EDIT = 'POST_EDIT'
 export const POST_DELETE = 'POST_DELETE'
@@ -54,10 +51,10 @@ export function fetchPostList(){
   return (dispatch) => {
     request.then(function(result) {
       if(result == null){
-        let emptyArray = []
-        dispatch({type: 'POST_LIST_SET', payload: emptyArray })
+        let emptyPostList = {}
+        dispatch({type: 'POST_LIST_SET', payload: emptyPostList })
       } else {
-        dispatch({type: 'POST_LIST_SET', payload: keyIndex(result,1) })
+        dispatch({type: 'POST_LIST_SET', payload: result })
       }
     });
   }
@@ -75,7 +72,6 @@ export function postVoteDown ( id ) {
 
 export function postVoteUp ( id ) {
   const request = contentAPIutil.postVoteUp(id);
-
   return (dispatch) => {
     request.then(function(result) {
       dispatch({type: 'POST_VOTE_UP', payload: id })

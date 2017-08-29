@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { postVoteDown, postVoteUp } from '../actions/post_actions.js';
 import PropTypes from 'prop-types';
 import { Badge, Button } from 'react-bootstrap';
 import { Router, Link } from 'react-router-dom';
@@ -11,17 +12,20 @@ let localDebug =1;
 let localDebugContext = 'PostSummary.js'
 
 class PostSummaryComponent extends Component {
+  state = {
+    post: {},
+  }
+
   static propTypes = {
-    post: PropTypes.object.isRequired,
-    votePostUp: PropTypes.func.isRequired,
-    votePostDown:PropTypes.func.isRequired
+    postID: PropTypes.string.isRequired
   }
 
 
   render(){
-    const { post, votePostUp, votePostDown } = this.props
-    let postURL = '/'+post.category+'/'+post.id
-    let postDate = new Date(post.timestamp)
+    const { post, voteDownPost, voteUpPost } = this.props
+    let postObject = post[0]
+    let postURL = '/'+postObject.category+'/'+postObject.id
+    let postDate = new Date(postObject.timestamp)
     let postDateString = dateToStringYYYY_MM_DD_HH_MM(postDate);
 
     if(localDebug === 1){
@@ -30,15 +34,15 @@ class PostSummaryComponent extends Component {
     }
 
     return(
-      <div id={post.id}>
-        <Link to={postURL}>{post.title}</Link>
-        <div>{'Posted on '+ postDateString +' by '+ post.author}</div>
+      <div id={postObject.id}>
+        <Link to={postURL}>{postObject.title}</Link>
+        <div>{'Posted on '+ postDateString +' by '+ postObject.author}</div>
         <div>
-          <Badge>{'Votes: '+ post.voteScore}</Badge>
+          <Badge>{'Votes: '+ postObject.voteScore}</Badge>
           <Button
             bsSize="xsmall"
             onClick={(event) => {
-              votePostUp(post.id);
+              voteUpPost(postObject.id);
             }}
           >
             <FaThumbsOUp size={30}/>
@@ -46,7 +50,7 @@ class PostSummaryComponent extends Component {
           <Button
             bsSize="xsmall"
             onClick={(event) => {
-            votePostDown(post.id);
+            voteDownPost(postObject.id);
           }}
           >
             <FaThumbsODown size={30}/>
@@ -57,4 +61,21 @@ class PostSummaryComponent extends Component {
   }
 }
 
-export default PostSummaryComponent
+function mapStateToProps (state, ownProps) {
+  return {
+      post: state.postManager.postList.filter((post) => (post.id === ownProps.postID)),
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    voteDownPost: (data)=>dispatch(postVoteDown(data)),
+    voteUpPost: (data)=>dispatch(postVoteUp(data)),
+  }
+}
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PostSummaryComponent)
