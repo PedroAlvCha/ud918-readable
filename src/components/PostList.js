@@ -20,7 +20,7 @@ import _orderBy from 'lodash.orderby';
 
 class ListPostsComponent extends Component {
   state = {
-    postList: {},
+    postList: [],
     postListOrderBy: '',
     postListOrderAscDesc:'',
   }

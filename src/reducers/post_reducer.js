@@ -8,10 +8,10 @@ import  {
           POST_LIST_CHANGE_SORT_ASCDESC,
           POST_LIST_CHANGE_SORT_VARIABLE,
         } from '../actions/post_actions.js'
-
+import _values from 'lodash.values';
 
 const initialPostListState = {
-    postList: {},
+    postList: [],
     postListOrderBy: 'timestamp',
     postListOrderAscDesc: 'desc',
 }
@@ -45,26 +45,26 @@ export function postManager (state = initialPostListState, action) {
       postPositionInArray = state.postList.findIndex(x => x.id === postIds)
       return {
         ...state,
-        [postListPointer]: {
+        [postListPointer]: _values({
           ...state[postListPointer],
           [postPositionInArray]:{
             ...state[postListPointer][postPositionInArray],
             [voteScorePointer]:state[postListPointer][postPositionInArray][voteScorePointer]+1,
           },
-        }
+        })
       }
     case POST_VOTE_DOWN :
       postIds = action.payload
       postPositionInArray = state.postList.findIndex(x => x.id === postIds)
       return {
         ...state,
-        [postListPointer]: {
+        [postListPointer]: _values({
           ...state[postListPointer],
           [postPositionInArray]:{
             ...state[postListPointer][postPositionInArray],
             [voteScorePointer]:state[postListPointer][postPositionInArray][voteScorePointer]-1,
           },
-        }
+        })
       }
     case POST_LIST_SET :
       const postListToOverWrite = action.payload
