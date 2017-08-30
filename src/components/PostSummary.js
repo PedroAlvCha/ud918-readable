@@ -7,6 +7,7 @@ import { Router, Link } from 'react-router-dom';
 import { dateToStringYYYY_MM_DD_HH_MM } from '../utils/helpers.js';
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up';
 import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down';
+import _filter from 'lodash.filter';
 
 
 class PostSummaryComponent extends Component {
@@ -57,7 +58,7 @@ class PostSummaryComponent extends Component {
 
 function mapStateToProps (state, ownProps) {
   return {
-      post: state.postManager.postList.filter((post) => (post.id === ownProps.postID)),
+      post: _filter(state.postManager.postList, {'id': ownProps.postID}),
   }
 }
 

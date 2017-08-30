@@ -18,10 +18,8 @@ const initialPostListState = {
 
 export function postManager (state = initialPostListState, action) {
 
-  const postManagerPointer = 'postManager'
   const postListPointer = 'postList'
   const voteScorePointer = 'voteScore'
-  const postListOrderAscDescPointer = 'postListOrderAscDesc'
   var postIds
   var postPositionInArray
 

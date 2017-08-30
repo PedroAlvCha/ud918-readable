@@ -34,8 +34,9 @@ Since this is a development project for learning, a list of additional extension
 13. `npm install --save react-bootstrap` for look and feel
 14. `npm install --save react-icons` icons for our buttons
 15. `npm install --save lodash.map` using Loadesh for handling an object list made of objects
-16. `npm install --save lodash.orderby` using Loadesh for ordering an object list made of objects 
-17. `npm install --save socket.io` lets talk with sockets
+16. `npm install --save lodash.orderby` using Loadesh for ordering an object list made of objects
+17. `npm install --save lodash.filter` using Loadesh for filtering an object list made of objects 
+18. `npm install --save socket.io` lets talk with sockets
 
 ## Pending Dev
 
