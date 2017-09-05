@@ -13,10 +13,12 @@ export function categoryCreate ({ name, path }) {
   }
 }
 
-const categoryListSet = categoryListToSet => ({
-  type:CATEGORY_LIST_SET,
-  categoryListToSet,
-});
+export function categoryListSet(categoryListToSet){
+  return {
+    type:CATEGORY_LIST_SET,
+    categoryListToSet,
+  }
+};
 
 export function fetchCategoryList(){
   const request = contentAPIutil.categoriesGet();

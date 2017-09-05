@@ -1,7 +1,10 @@
+import * as contentAPIutil from '../utils/contentAPI.js';
+
 export const COMMENT_EDIT = 'COMMENT_EDIT'
 export const COMMENT_DELETE = 'COMMENT_DELETE'
 export const COMMENT_CREATE = 'COMMENT_CREATE'
 export const COMMENT_VOTE = 'COMMENT_VOTE'
+export const COMMENT_LIST_SET = 'COMMENT_LIST_SET'
 
 export function commentCreate ({ id, timestamp, body, author, parentId }) {
   return {
@@ -13,6 +16,21 @@ export function commentCreate ({ id, timestamp, body, author, parentId }) {
     parentId,
   }
 }
+
+export function fetchCommentList(postID){
+  const request = contentAPIutil.commentsGetForPost(postID);
+
+  return (dispatch) => {
+    request.then(function(result) {
+      if(result == null){
+        let emptyCommentList = {}
+        dispatch({type: 'COMMENT_LIST_SET', payload: emptyCommentList })
+      } else {
+        dispatch({type: 'COMMENT_LIST_SET', payload: result })
+      }
+    });
+  }
+};
 
 export function commentDelete ({ id }) {
   return {

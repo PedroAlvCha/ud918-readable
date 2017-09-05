@@ -1,6 +1,3 @@
-let localDebug =1;
-let localDebugContext = 'contentAPI.js'
-
 const api = process.env.REACT_APP_README_API_URL || 'http://localhost:5001'
 
 let token = localStorage.token
@@ -21,6 +18,11 @@ export const categoriesGet = () =>
 
 export const postsGet = () =>
   fetch(`${api}/posts`, { myHeaders })
+    .then(res => res.json())
+    .then(data => data)
+
+export const commentsGetForPost = (postID) =>
+  fetch(`${api}/posts/${postID}/comments`, { myHeaders })
     .then(res => res.json())
     .then(data => data)
 

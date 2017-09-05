@@ -37,6 +37,7 @@ Since this is a development project for learning, a list of additional extension
 16. `npm install --save lodash.orderby` using Loadesh for ordering an object list made of objects
 17. `npm install --save lodash.filter` using Loadesh for filtering an object list made of objects
 18. `npm install --save redux-form` for handling a form through redux
+19. `npm install --save react-modal` for handlilng a modal to store the form
 
 
 ## Pending Dev

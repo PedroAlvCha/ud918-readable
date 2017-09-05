@@ -7,6 +7,8 @@ import  {
           POST_LIST_SET,
           POST_LIST_CHANGE_SORT_ASCDESC,
           POST_LIST_CHANGE_SORT_VARIABLE,
+          NEW_POST_MODAL_OPEN,
+          NEW_POST_MODAL_CLOSE,
         } from '../actions/post_actions.js'
 import _values from 'lodash.values';
 
@@ -14,6 +16,7 @@ const initialPostListState = {
     postList: [],
     postListOrderBy: 'timestamp',
     postListOrderAscDesc: 'desc',
+    isNewPostModalOpen: false,
 }
 
 export function postManager (state = initialPostListState, action) {
@@ -34,6 +37,16 @@ export function postManager (state = initialPostListState, action) {
           ...state,
           postListOrderAscDesc:action.sortDirection,
       }
+    case NEW_POST_MODAL_OPEN :
+      return {
+          ...state,
+          isNewPostModalOpen:true,
+      }
+    case NEW_POST_MODAL_CLOSE :
+      return {
+          ...state,
+          isNewPostModalOpen:false,
+        }
     case POST_EDIT :
       return state
     case POST_DELETE :

@@ -9,6 +9,8 @@ export const POST_VOTE_DOWN = 'POST_VOTE_DOWN'
 export const POST_LIST_SET = 'POST_LIST_SET'
 export const POST_LIST_CHANGE_SORT_VARIABLE = 'POST_LIST_CHANGE_SORT_VARIABLE'
 export const POST_LIST_CHANGE_SORT_ASCDESC = 'POST_LIST_CHANGE_SORT_ASCDESC';
+export const NEW_POST_MODAL_OPEN = 'NEW_POST_MODAL_OPEN'
+export const NEW_POST_MODAL_CLOSE = 'NEW_POST_MODAL_CLOSE'
 
 
 export function postCreate ({ id, timestamp, title, body, author, category }) {
@@ -29,7 +31,16 @@ export function postDelete ({ id }) {
     id,
   }
 }
-
+export function newPostModalOpen () {
+  return {
+    type: NEW_POST_MODAL_OPEN,
+  }
+}
+export function newPostModalClose () {
+  return {
+    type: NEW_POST_MODAL_CLOSE,
+  }
+}
 
 export function postEdit ({ id, timestamp, title, body, author, category }) {
   return {
@@ -42,10 +53,12 @@ export function postEdit ({ id, timestamp, title, body, author, category }) {
     category,
   }
 }
-const postListSet = postListToSet => ({
-  type:POST_LIST_SET,
-  postListToSet,
-});
+export function postListSet(postListToSet){
+  return{
+    type:POST_LIST_SET,
+    postListToSet,
+  }
+};
 
 export function fetchPostList(){
   const request = contentAPIutil.postsGet();

@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Modal from 'react-modal';
+
 import  {
           fetchPostList
           ,postListChangeSort_Variable
           ,postListChangeSort_AscDesc
+          ,newPostModalOpen
+          ,newPostModalClose
         } from '../actions/post_actions.js';
-import {  ListGroup
+import {
+          ListGroup
           , ListGroupItem
           , ButtonToolbar
           , ToggleButtonGroup
@@ -23,6 +28,7 @@ class ListPostsComponent extends Component {
     postList: [],
     postListOrderBy: '',
     postListOrderAscDesc:'',
+    isNewPostModalOpen: 0,
   }
 
   componentWillMount() {
@@ -35,6 +41,9 @@ class ListPostsComponent extends Component {
             , postListOrderAscDesc
             , postListSortAscDescChange
             , postListSortVariableChange
+            , isNewPostModalOpen
+            , newPostModalSetOpen
+            , newPostModalSetClosed
           } = this.props
 
     const orderedPostList = _orderBy(postList, postListOrderBy, postListOrderAscDesc)
@@ -66,7 +75,12 @@ class ListPostsComponent extends Component {
               <ToggleButton value="asc">Ascending</ToggleButton>
               <ToggleButton value="desc">Descending</ToggleButton>
             </ToggleButtonGroup>
-            <Button bsStyle="primary"> Add New Post + </Button>
+            <Button
+              bsStyle="primary"
+              onClick={(event) => {
+                newPostModalSetOpen(event);
+              }}
+            > Add New Post + </Button>
           </ButtonToolbar>
         </div>
         <ListGroup>
@@ -78,6 +92,20 @@ class ListPostsComponent extends Component {
             </ListGroupItem>
           )}
         </ListGroup>
+        <Modal
+          isOpen={isNewPostModalOpen}
+          onRequestClose={(event) => {
+            newPostModalSetClosed(event);
+          }}
+          contentLabel='Add New Post'
+        >
+          <div >
+            <p>Hola Mundo Modal.</p>
+          </div>
+          <Button onClick={(event) => {
+            newPostModalSetClosed(event);
+          }}>Cancel</Button>
+        </Modal>
       </div>
     )
   }
@@ -87,6 +115,7 @@ function mapStateToProps (state, ownProps) {
       postList: state.postManager.postList,
       postListOrderBy: state.postManager.postListOrderBy,
       postListOrderAscDesc: state.postManager.postListOrderAscDesc,
+      isNewPostModalOpen: state.postManager.isNewPostModalOpen,
   }
 }
 
@@ -94,7 +123,9 @@ function mapDispatchToProps (dispatch) {
   return {
     postListFetch: (data) =>dispatch(fetchPostList(data)),
     postListSortVariableChange: (data)=>dispatch(postListChangeSort_Variable(data)),
-    postListSortAscDescChange: (data)=>dispatch(postListChangeSort_AscDesc(data))
+    postListSortAscDescChange: (data)=>dispatch(postListChangeSort_AscDesc(data)),
+    newPostModalSetOpen: (data)=>dispatch(newPostModalOpen(data)),
+    newPostModalSetClosed: (data)=>dispatch(newPostModalClose(data)),
   }
 }
 
