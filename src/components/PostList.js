@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
-
+import _map from 'lodash.map';
+import _orderBy from 'lodash.orderby';
 import  {
           fetchPostList
           ,postListChangeSort_Variable
@@ -20,8 +21,7 @@ import {
           , Button
         } from 'react-bootstrap';
 import PostSummaryComponent  from './PostSummary.js';
-import _map from 'lodash.map';
-import _orderBy from 'lodash.orderby';
+import PostAddComponent from './PostAdd.js'; 
 
 class ListPostsComponent extends Component {
   state = {
@@ -99,9 +99,7 @@ class ListPostsComponent extends Component {
           }}
           contentLabel='Add New Post'
         >
-          <div >
-            <p>Hola Mundo Modal.</p>
-          </div>
+          <PostAddComponent></PostAddComponent>
           <Button onClick={(event) => {
             newPostModalSetClosed(event);
           }}>Cancel</Button>
