@@ -141,6 +141,7 @@ app.get('/categories', (req, res) => {
 })
 
 app.get('/posts', (req, res) => {
+    console.log('gettingPosts')
     posts.getAll(req.token)
       .then(
           (data) => res.send(data),
@@ -168,8 +169,7 @@ app.get('/:category/posts', (req, res) => {
 
 
 app.post('/posts', bodyParser.json(), (req, res) => {
-    console.log('req.post',req.post);
-    console.log('req.body',req.body);
+    //console.log('req.body',req.body)
     posts.add(req.token, req.body)
       .then(
           (data) => res.send(data),

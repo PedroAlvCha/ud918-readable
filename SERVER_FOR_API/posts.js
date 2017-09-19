@@ -63,7 +63,7 @@ function getAll (token) {
 }
 
 function add (token, post) {
-  console.log('postIncoming',post)
+  //console.log('post',post);
   return new Promise((res) => {
     let posts = getData(token)
 
@@ -77,8 +77,7 @@ function add (token, post) {
       voteScore: 1,
       deleted: false
     }
-
-    cossole.log('posts',posts)
+    //console.log('posts',posts);
 
     res(posts[post.id])
   })
