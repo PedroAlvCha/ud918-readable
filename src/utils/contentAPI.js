@@ -38,6 +38,7 @@ export const postVoteUp = (postId) =>
       }).then(res => res.json())
         .then(data => data)
 
+
 export const postVoteDown = (postId) =>
   fetch(`${api}/posts/${postId}`, {
         method: 'POST',
@@ -49,3 +50,15 @@ export const postVoteDown = (postId) =>
         body: JSON.stringify({ option: "downVote" })
   }).then(res => res.json())
     .then(data => data)
+
+export const postAddNew = (post) =>
+  fetch(`${api}/posts`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': token,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(post)
+      }).then(res => res.json())
+        .then(data => data)

@@ -1,6 +1,5 @@
 import  {
           POST_DELETE,
-          POST_CREATE,
           POST_VOTE_UP,
           POST_VOTE_DOWN,
           POST_EDIT,
@@ -9,6 +8,7 @@ import  {
           POST_LIST_CHANGE_SORT_VARIABLE,
           NEW_POST_MODAL_OPEN,
           NEW_POST_MODAL_CLOSE,
+          POST_LIST_SET_AND_NEW_POST_MODAL_CLOSE,
         } from '../actions/post_actions.js'
 import _values from 'lodash.values';
 
@@ -25,6 +25,7 @@ export function postManager (state = initialPostListState, action) {
   const voteScorePointer = 'voteScore'
   var postIds
   var postPositionInArray
+
 
   switch (action.type) {
     case POST_LIST_CHANGE_SORT_VARIABLE :
@@ -47,11 +48,19 @@ export function postManager (state = initialPostListState, action) {
           ...state,
           isNewPostModalOpen:false,
         }
+    case POST_LIST_SET_AND_NEW_POST_MODAL_CLOSE:
+      const newPost = action.post
+      return {
+        ...state,
+        [postListPointer]: _values({
+          ...state.postList,
+          [newPost.id]: newPost,
+        }),
+        isNewPostModalOpen:false,
+      }
     case POST_EDIT :
       return state
     case POST_DELETE :
-      return state
-    case POST_CREATE :
       return state
     case POST_VOTE_UP :
       postIds = action.payload

@@ -168,6 +168,8 @@ app.get('/:category/posts', (req, res) => {
 
 
 app.post('/posts', bodyParser.json(), (req, res) => {
+    console.log('req.post',req.post);
+    console.log('req.body',req.body);
     posts.add(req.token, req.body)
       .then(
           (data) => res.send(data),

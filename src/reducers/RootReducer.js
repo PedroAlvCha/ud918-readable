@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   postManager,
   commentManager,
   categoryManager,
-  formReducer,
+  form: formReducer,
 });
 
 export {rootReducer};

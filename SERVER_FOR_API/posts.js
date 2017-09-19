@@ -11,7 +11,7 @@ const defaultData = {
     author: 'thingtwo',
     category: 'react',
     voteScore: 6,
-    deleted: false 
+    deleted: false
   },
   "6ni6ok3ym7mf1p33lnez": {
     id: '6ni6ok3ym7mf1p33lnez',
@@ -46,7 +46,7 @@ function get (token, id) {
   return new Promise((res) => {
     const posts = getData(token)
     res(
-      posts[id].deleted 
+      posts[id].deleted
         ? {}
         : posts[id]
     )
@@ -63,9 +63,10 @@ function getAll (token) {
 }
 
 function add (token, post) {
+  console.log('postIncoming',post)
   return new Promise((res) => {
     let posts = getData(token)
-    
+
     posts[post.id] = {
       id: post.id,
       timestamp: post.timestamp,
@@ -76,7 +77,9 @@ function add (token, post) {
       voteScore: 1,
       deleted: false
     }
-     
+
+    cossole.log('posts',posts)
+
     res(posts[post.id])
   })
 }

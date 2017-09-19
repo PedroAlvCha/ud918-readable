@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Modal from 'react-modal';
+//import Modal from 'react-modal';
 import _map from 'lodash.map';
 import _orderBy from 'lodash.orderby';
 import  {
@@ -9,6 +9,7 @@ import  {
           ,postListChangeSort_AscDesc
           ,newPostModalOpen
           ,newPostModalClose
+          ,newPostFormSubmit
         } from '../actions/post_actions.js';
 import {
           ListGroup
@@ -19,9 +20,10 @@ import {
           , DropdownButton
           , MenuItem
           , Button
+          , Modal
         } from 'react-bootstrap';
 import PostSummaryComponent  from './PostSummary.js';
-import PostAddComponent from './PostAdd.js'; 
+import PostAddComponent from './PostAdd.js';
 
 class ListPostsComponent extends Component {
   state = {
@@ -100,9 +102,19 @@ class ListPostsComponent extends Component {
           contentLabel='Add New Post'
         >
           <PostAddComponent></PostAddComponent>
-          <Button onClick={(event) => {
-            newPostModalSetClosed(event);
-          }}>Cancel</Button>
+        </Modal>
+        <Modal
+          show={isNewPostModalOpen}
+          onHide={newPostModalSetClosed}
+          container={this}
+          aria-labelledby="contained-modal-title"
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title">Add New Post</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <PostAddComponent></PostAddComponent>
+          </Modal.Body>
         </Modal>
       </div>
     )
