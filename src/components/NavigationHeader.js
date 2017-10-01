@@ -16,22 +16,28 @@ class NavBarInstance extends Component {
     this.props.categoryListFetch();
   }
 
+
+
   render(){
     const { categoryList } = this.props
 
+    function handleSelect(selectedKey) {
+      alert('selected ' + selectedKey);
+    }
+
     return(
-      <Navbar inverse collapseOnSelect defaultExpanded>
+      <Navbar inverse collapseOnSelect defaultCollapsed>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="">Readable</a>
+            <a href="/">Readable</a>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-          <Nav>
+          <Nav >
               {categoryList.map((category,index) => (
-                <NavItem  eventKey={index} key={index} id={index} href={category.path}>
-                  {capitalize(category.name)}
+                <NavItem  eventKey={index} key={index} id={index} href={"/"+category.path}>
+                  <Link to={"/"+category.path}>{capitalize(category.name)}</Link>
                 </NavItem>
               ))}
           </Nav>
