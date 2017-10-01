@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 //import Modal from 'react-modal';
 import _map from 'lodash.map';
 import _orderBy from 'lodash.orderby';
+import _filter from 'lodash.filter';
 import  {
           fetchPostList
           ,postListChangeSort_Variable
@@ -31,6 +32,7 @@ class ListPostsComponent extends Component {
     postListOrderBy: '',
     postListOrderAscDesc:'',
     isNewPostModalOpen: 0,
+    categorySelected: ''
   }
 
   componentWillMount() {
@@ -82,7 +84,7 @@ class ListPostsComponent extends Component {
               onClick={(event) => {
                 newPostModalSetOpen(event);
               }}
-            > Add New Post + </Button>
+            >Post</Button>
           </ButtonToolbar>
         </div>
         <ListGroup>
@@ -121,11 +123,22 @@ class ListPostsComponent extends Component {
   }
 }
 function mapStateToProps (state, ownProps) {
+  let localPostList
+  console.log('state.postManager.postList',state.postManager.postList);
+  if((ownProps.categorySelected ===undefined)|(ownProps.categorySelected ==='')){
+    localPostList= state.postManager.postList
+  }
+  else{
+    localPostList= _filter(state.postManager.postList, {'category': ownProps.categorySelected})
+  }
+  console.log('ownProps',ownProps);
+  console.log('localPostList',localPostList);
   return {
-      postList: state.postManager.postList,
+      postList:localPostList,
       postListOrderBy: state.postManager.postListOrderBy,
       postListOrderAscDesc: state.postManager.postListOrderAscDesc,
       isNewPostModalOpen: state.postManager.isNewPostModalOpen,
+      categorySelected: ownProps.categorySelected,
   }
 }
 
