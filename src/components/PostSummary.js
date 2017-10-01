@@ -26,12 +26,14 @@ class PostSummaryComponent extends Component {
     let postURL = '/'+postObject.category+'/'+postObject.id
     let postDate = new Date(postObject.timestamp)
     let postDateString = dateToStringYYYY_MM_DD_HH_MM(postDate);
+    let postCategoryURL = '/'+postObject.category
 
+    console.log('postObject',postObject);
 
     return(
       <div id={postObject.id}>
         <Link to={postURL}>{postObject.title}</Link>
-        <div>{'Posted on '+ postDateString +' by '+ postObject.author}</div>
+        <div>{'Posted in '}<Link to={postCategoryURL}>{postObject.category}</Link>{' on '+ postDateString +' by '+ postObject.author}</div>
         <div>
           <Badge>{'Votes: '+ postObject.voteScore}</Badge>
           <Button
